@@ -1,7 +1,6 @@
 /**
    The Policy class holds data which represents an insurance policy.
 */
-
 public class Policy
 {
    private String providerName, policyHolderFirstName, policyHolderLastName, policyHolderSmokingStatus;
@@ -11,7 +10,6 @@ public class Policy
    /**
       No-arg constructor
    */
-   
    public Policy()
    {
       providerName = "";
@@ -35,7 +33,6 @@ public class Policy
       @param holderHeight The policy holder's height
       @param holderWeight The policy holder's weight
    */
-   
    public Policy(String provName, String firstName, String lastName, String smokingStatus, int polNumber, int holderAge, double holderHeight, double holderWeight)
    {
       providerName = provName;
@@ -52,7 +49,6 @@ public class Policy
       The setProvname method sets the provider name.
       @param provName Name of the provider
    */
-   
    public void setProvName(String provName) 
    {
       providerName = provName;  
@@ -62,7 +58,6 @@ public class Policy
       The setFirstName method sets the first name of the policy holder.
       @param firstName First Name of the policy holder
    */
-   
    public void setFirstName(String firstName) 
    {
       policyHolderFirstName = firstName;  
@@ -72,7 +67,6 @@ public class Policy
       The setLastName method sets the last name of the policy holder.
       @param lastName Last Name of the policy holder
    */
-   
    public void setLastName(String lastName) 
    {
       policyHolderLastName = lastName;  
@@ -82,7 +76,6 @@ public class Policy
       The setSmokingStatus method sets the smoking status of the policy holder.
       @param smokingStatus Smoking status of the policy holder
    */
-   
    public void setSmokingStatus(String smokingStatus) 
    {
       policyHolderSmokingStatus = smokingStatus;  
@@ -92,7 +85,6 @@ public class Policy
       The setPolNumber method sets the policy number.
       @param polNumber Policy number
    */
-   
    public void setPolNumber(int polNumber) 
    {
       policyNumber = polNumber;  
@@ -102,7 +94,6 @@ public class Policy
       The setHolderAge method sets the age of the policy holder.
       @param holderAge Age of the policy holder
    */
-   
    public void setHolderAge(int holderAge) 
    {
       policyHolderAge = holderAge;  
@@ -112,7 +103,6 @@ public class Policy
       The setHolderHeight method sets the height of the policy holder.
       @param holderHeight Height of the policy holder
    */
-   
    public void setHolderHeight(double holderHeight) 
    {
       policyHolderHeight = holderHeight;  
@@ -122,7 +112,6 @@ public class Policy
       The setHolderWeight method sets the weight of the policy holder.
       @param holderWeight Weight of the policy holder
    */
-   
    public void setHolderWeight(double holderWeight) 
    {
       policyHolderWeight = holderWeight;  
@@ -132,7 +121,6 @@ public class Policy
       getProvName method
       @return Name of the provider.
    */
-   
    public String getProvName()
    {
       return providerName;
@@ -142,7 +130,6 @@ public class Policy
       getFirstName method
       @return First name of the policy holder.
    */
-   
    public String getFirstName()
    {
       return policyHolderFirstName;
@@ -152,7 +139,6 @@ public class Policy
       getLastName method
       @return Last name of the policy holder.
    */
-   
    public String getLastName()
    {
       return policyHolderLastName;
@@ -162,7 +148,6 @@ public class Policy
       getSmokingStatus method
       @return Smoking status of the policy holder.
    */
-   
    public String getSmokingStatus()
    {
       return policyHolderSmokingStatus;
@@ -172,7 +157,6 @@ public class Policy
       getPolNumber method
       @return Policy number.
    */
-   
    public int getPolNumber()
    {
       return policyNumber;
@@ -182,7 +166,6 @@ public class Policy
       getHolderAge method
       @return Age of the policy holder.
    */
-   
    public int getHolderAge()
    {
       return policyHolderAge;
@@ -192,7 +175,6 @@ public class Policy
       getHolderHeight method
       @return Height of the policy holder.
    */
-   
    public double getHolderHeight()
    {
       return policyHolderHeight;
@@ -202,7 +184,6 @@ public class Policy
       getHolderWeight method
       @return Weight of the policy holder.
    */
-   
    public double getHolderWeight()
    {
       return policyHolderWeight;
@@ -212,7 +193,6 @@ public class Policy
       getHolderBMI method
       @return BMI of the policy holder.
    */
-   
    public double getHolderBMI()
    {
       double holderBMI;
@@ -223,7 +203,6 @@ public class Policy
       getPolicyPrice method
       @return Calculation of policy price.
    */
-   
    public double getPolicyPrice()
    {
       double baseFee = 600;
