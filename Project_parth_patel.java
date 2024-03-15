@@ -2,83 +2,52 @@ import java.util.*;
 import java.io.*;
 
 public class Project_parth_patel
-{
-   // Main method
+{ // Open the Class Container  
    public static void main(String[] args) throws IOException
-   {
+   { // Open the Main Method
    
       try
       {
-         // Scanner class is needed to allow user input
+         /*Create an instance of the File class. Pass the string "PolicyInformation.txt" to the constructor. 
+         This process creates a File object that represents the file PolicyInformation.txt.*/
          File file = new File("PolicyInformation.txt");
          
+         /* Pass a reference to the File object as an argument to the Scanner class constructor (i.e., file) */
          Scanner inputFile = new Scanner(file);
          
-         int policyNum = 0, holderAge = 0;
+         // Declare the Variables
+         int policyNum = 0, holderAge = 0, totalSmokers = 0, totalNonSmokers = 0;
          String providerName = "", firstName = "", lastName = "", smokingStatus = "", fileInput = "";
          double holderHeight = 0.0, holderWeight = 0.0; 
          
+         // Create an Array List to store objects. The ArrayList will hold Policy Objects.
          ArrayList<Policy> policies = new ArrayList<Policy>();
          
-         /*
-         // Prompting the user to input the policy number
-         System.out.print("Please enter the Policy Number: ");
-         int policyNum = keyboard.nextInt();
-         keyboard.nextLine();
-         
-         // Prompting the user to input the provider name
-         System.out.print("Please enter the Provider Name: ");
-         String providerName = keyboard.nextLine();
-         
-         // Prompting the user to input the policy holder's first name
-         System.out.print("Please enter the Policyholder's First Name: ");
-         String firstName = keyboard.nextLine();
-         
-         // Prompting the user to input the policy holder's last name
-         System.out.print("Please enter the Policyholder's Last Name: ");
-         String lastName = keyboard.nextLine();
-         
-         // Prompting the user to input the policy holder's age
-         System.out.print("Please enter the Policyholder's Age: ");
-         int holderAge = keyboard.nextInt();
-         keyboard.nextLine();
-         
-         // Prompting the user to input the policy holder's smoking status
-         System.out.print("Please enter the Policyholder's Smoking Status (smoker/non-smoker): ");
-         String smokingStatus = keyboard.nextLine();
-         
-         // Prompting the user to input the policy holder's height
-         System.out.print("Please enter the Policyholder's Height (in inches): ");
-         double holderHeight = keyboard.nextDouble();
-         
-         // Prompting the user to input the policy holder's weight
-         System.out.print("Please enter the Policyholder's Weight (in pounds): ");
-         double holderWeight = keyboard.nextDouble();
-         keyboard.nextLine();
-         
-         */
-         
+         /* Use a while loop to read the file. Use the hasNext() method to determine whether 
+            the file has more data to be read. Use an "if statement" to determine the end of the file and 
+            to consume newline characters */
          while (inputFile.hasNext())
-         {
-            fileInput = inputFile.nextLine();
-            policyNum = Integer.parseInt(fileInput);
+         { // Open Loop
+         
+            fileInput = inputFile.nextLine(); // Read the next line of the file as a String
+            policyNum = Integer.parseInt(fileInput); // Convert the input into a Integer and assign to the policyNum variable
             
-            providerName = inputFile.nextLine();
+            providerName = inputFile.nextLine(); // Read the next line of the file as a String and assign the input to the providerName variable
             
-            firstName = inputFile.nextLine();
+            firstName = inputFile.nextLine(); // Read the next line of the file as a String and assign the input to the firstName variable
             
-            lastName = inputFile.nextLine();
+            lastName = inputFile.nextLine(); // Read the next line of the file as a String and assign the input to the lastName variable
             
-            fileInput = inputFile.nextLine();
-            holderAge = Integer.parseInt(fileInput);
+            fileInput = inputFile.nextLine(); // Read the next line of the file as a String
+            holderAge = Integer.parseInt(fileInput); // Convert the input into a Integer and assign to the holderAge variable
             
-            smokingStatus = inputFile.nextLine();
+            smokingStatus = inputFile.nextLine(); // Read the next line of the file as a String and assign the input to the smokingStatus variable
             
-            fileInput = inputFile.nextLine();
-            holderHeight = Double.parseDouble(fileInput);
+            fileInput = inputFile.nextLine(); // Read the next line of the file as a String
+            holderHeight = Double.parseDouble(fileInput); // Convert the input into a Double and assign to the holderHeight variable
             
-            fileInput = inputFile.nextLine();
-            holderWeight = Double.parseDouble(fileInput);
+            fileInput = inputFile.nextLine(); // Read the next line of the file as a String
+            holderWeight = Double.parseDouble(fileInput); // Convert the input into a Double and assign to the holderWeight variable
             
             // Skip the blank line if we have not reached the end of the file
             if(inputFile.hasNext())
@@ -86,35 +55,55 @@ public class Project_parth_patel
                inputFile.nextLine();
             }
 
-         // Creation of a Policy object
+            /* Create Policy objects using the Policy class type - we are still under the while loop. 
+               Objects will be created as long as there are records in the file to read.*/
             Policy p = new Policy(providerName, firstName, lastName, smokingStatus, 
                                        policyNum, holderAge, holderHeight, holderWeight);
+            
+            /* Add Policy objects to the ArrayList (Note: policies is the reference variable for the ArrayList 
+               and p is the reference variable for the Policy objects)*/                           
             policies.add(p);
+            
+            // Adding the total count of policy holders who are smokers and non-smokers
+            if (smokingStatus.equalsIgnoreCase("smoker"))
+            {
+               ++totalSmokers;
+            }
+            else if (smokingStatus.equalsIgnoreCase("non-smoker"))
+            {
+               ++totalNonSmokers;
+            }
                                        
          } // Close While Loop
          
          // Close the file
          inputFile.close();
          
+         // Use a for loop to display the output
          for (int i = 0; i < policies.size(); ++i)
          {
             // Displaying the policy information for the user
-            System.out.println("\nPolicy Number: " + policies.get(i).getPolNumber());
-            System.out.println("Provider Name: " + policies.get(i).getProvName());
-            System.out.println("Policyholder's First Name: " + policies.get(i).getFirstName());
-            System.out.println("Policyholder's Last Name: " + policies.get(i).getLastName());
-            System.out.println("Policyholder's Age: " + policies.get(i).getHolderAge());
-            System.out.println("Policyholder's Smoking Status: " + policies.get(i).getSmokingStatus());
-            System.out.println("Policyholder's Height: " + policies.get(i).getHolderHeight() + " inches");
-            System.out.println("Policyholder's Weight: " + policies.get(i).getHolderWeight() + " pounds");
-            System.out.printf("Policyholder's BMI: %,.2f", policies.get(i).getHolderBMI());
-            System.out.printf("\nPolicy Price: $%,.2f", policies.get(i).getPolicyPrice());
+            System.out.println("\nPolicy Number: " + policies.get(i).getPolNumber()); // Instance Method - returns the policy number
+            System.out.println("Provider Name: " + policies.get(i).getProvName()); // Instance Method - returns the provider name
+            System.out.println("Policyholder's First Name: " + policies.get(i).getFirstName()); // Instance Method - returns the first name
+            System.out.println("Policyholder's Last Name: " + policies.get(i).getLastName()); // Instance Method - returns the last name
+            System.out.println("Policyholder's Age: " + policies.get(i).getHolderAge()); // Instance Method - returns the policy holders age
+            System.out.println("Policyholder's Smoking Status (smoker/non-smoker): " + policies.get(i).getSmokingStatus()); // Instance Method - returns the policy holders smoking status
+            System.out.println("Policyholder's Height: " + policies.get(i).getHolderHeight() + " inches"); // Instance Method - returns the policy holders height
+            System.out.println("Policyholder's Weight: " + policies.get(i).getHolderWeight() + " pounds"); // Instance Method - returns the policy holders weight
+            System.out.printf("Policyholder's BMI: %,.2f", policies.get(i).getHolderBMI()); // Method that returns BMI for each policy holder
+            System.out.printf("\nPolicy Price: $%,.2f", policies.get(i).getPolicyPrice()); // Method that returns the price for each policy 
             System.out.println();
          }
-      }
-      catch (IOException ex)
+         
+         System.out.println("\nThe number of policies with a smoker is: " + totalSmokers); // Print the total amount of smokers
+         System.out.println("\nThe number of policies with a non-smoker is: " + totalNonSmokers); // Print the total amount of non-smokers
+      } // Close the "try" block of code
+      
+      catch (IOException ex) //If something goes wrong, an IOException is "thrown" to us, and we "catch" it and deal with it
       {
-         System.out.println("Something went wrong reading the file.");
+         // Use the getMessage method of the exception we "caught" to print out it's message about what went wrong
+         System.out.println("Something went wrong reading the file." + ex.getMessage());
       }
       
    } // Close Main Method
