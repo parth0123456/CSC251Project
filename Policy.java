@@ -4,7 +4,7 @@
 public class Policy
 {
    private String providerName, policyHolderSmokingStatus;
-   private int policyNumber, policyHolderAge;
+   private int policyNumber, policyHolderAge, numberOfPolicies = 0;
    private double policyHolderHeight, policyHolderWeight;
    
    /**
@@ -18,6 +18,7 @@ public class Policy
       policyHolderAge = 0;
       policyHolderHeight = 0.0;
       policyHolderWeight = 0.0;
+      ++numberOfPolicies;
    }
    
    /**
@@ -38,6 +39,7 @@ public class Policy
       this.policyHolderAge = policyHolderAge;
       this.policyHolderHeight = policyHolderHeight;
       this.policyHolderWeight = policyHolderWeight;
+      ++numberOfPolicies;
    }
    
    /**
@@ -52,6 +54,7 @@ public class Policy
       policyHolderAge = obj.policyHolderAge;
       policyHolderHeight = obj.policyHolderHeight;
       policyHolderWeight = obj.policyHolderWeight;
+      ++numberOfPolicies;
    }
    
    // Setters
@@ -203,16 +206,29 @@ public class Policy
       
       return baseFee;
    }  
-   
+   /**
+      toString method
+      @return - A string containing the course information
+   */
+  
+   /** We make use of the String.format method to format the tuition cost and total cost. See Chapter 3 for information about this method.*/
+
    public String toString()
    {
-      return "Provider Name: " + providerName + 
+      return String.format("Provider Name: " + providerName + 
              "\nPolicy Holder Smoking Status: " + policyHolderSmokingStatus + 
              "\nPolicy Number: " + policyNumber +
              "\nPolicy Holder Age: " + policyHolderAge + 
              "\nPolicy Holder Height: " + policyHolderHeight +
              "\nPolicy Holder Weight: " + policyHolderWeight +
              "\nPolicy Holder BMI: " + getHolderBMI() +
-             "\nPolicy Price: " + getPolicyPrice();
+             "\nPolicy Price: " + getPolicyPrice());
    }
+   
+   public static int numberOfPolicies(int numberOfPolicies)
+   {
+      return numberOfPolicies;
+   }
+   
+   
 }
