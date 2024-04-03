@@ -3,7 +3,7 @@
 */
 public class Policy
 {
-   private String providerName, policyHolderFirstName, policyHolderLastName, policyHolderSmokingStatus;
+   private String providerName, policyHolderSmokingStatus;
    private int policyNumber, policyHolderAge;
    private double policyHolderHeight, policyHolderWeight;
    
@@ -13,8 +13,6 @@ public class Policy
    public Policy()
    {
       providerName = "";
-      policyHolderFirstName = "";
-      policyHolderLastName = "";
       policyHolderSmokingStatus = "";
       policyNumber = 0;
       policyHolderAge = 0;
@@ -25,123 +23,88 @@ public class Policy
    /**
       Constructor
       @param provName The provider name
-      @param firstName The policy holder's first name
-      @param lastName The policy holder's last name
       @param smokingStatus The policy holder's smoking status
       @param polNumber The policy number
       @param holderAge The policy holder's age
       @param holderHeight The policy holder's height
       @param holderWeight The policy holder's weight
    */
-   public Policy(String provName, String firstName, String lastName, String smokingStatus, int polNumber, int holderAge, double holderHeight, double holderWeight)
+   public Policy(String providerName, String policyHolderSmokingStatus, int policyNumber,
+                 int policyHolderAge, double policyHolderHeight, double policyHolderWeight)
    {
-      providerName = provName;
-      policyHolderFirstName = firstName;
-      policyHolderLastName = lastName;
-      policyHolderSmokingStatus = smokingStatus;
-      policyNumber = polNumber;
-      policyHolderAge = holderAge;
-      policyHolderHeight = holderHeight;
-      policyHolderWeight = holderWeight;
+      this.providerName = providerName;
+      this.policyHolderSmokingStatus = policyHolderSmokingStatus;
+      this.policyNumber = policyNumber;
+      this.policyHolderAge = policyHolderAge;
+      this.policyHolderHeight = policyHolderHeight;
+      this.policyHolderWeight = policyHolderWeight;
    }
    
-   /**
-      The setProvname method sets the provider name.
-      @param provName Name of the provider
-   */
-   public void setProvName(String provName) 
-   {
-      providerName = provName;  
-   }
+   // Setters
    
    /**
-      The setFirstName method sets the first name of the policy holder.
-      @param firstName First Name of the policy holder
+      The setProviderName method sets the provider name.
+      @param providerName Name of the provider
    */
-   public void setFirstName(String firstName) 
+   public void setProviderName(String providerName) 
    {
-      policyHolderFirstName = firstName;  
-   }
-   
-   /**
-      The setLastName method sets the last name of the policy holder.
-      @param lastName Last Name of the policy holder
-   */
-   public void setLastName(String lastName) 
-   {
-      policyHolderLastName = lastName;  
+      this.providerName = providerName;
    }
    
    /**
       The setSmokingStatus method sets the smoking status of the policy holder.
       @param smokingStatus Smoking status of the policy holder
    */
-   public void setSmokingStatus(String smokingStatus) 
+   public void setPolicyHolderSmokingStatus(String policyHolderSmokingStatus) 
    {
-      policyHolderSmokingStatus = smokingStatus;  
+      this.policyHolderSmokingStatus = policyHolderSmokingStatus;  
    }
-   
+      
    /**
-      The setPolNumber method sets the policy number.
-      @param polNumber Policy number
+      The setPolicyNumber method sets the policy number.
+      @param policyNumber Policy number
    */
-   public void setPolNumber(int polNumber) 
+   public void setPolicyNumber(int policyNumber) 
    {
-      policyNumber = polNumber;  
+      this.policyNumber = policyNumber;  
    }
    
    /**
       The setHolderAge method sets the age of the policy holder.
       @param holderAge Age of the policy holder
    */
-   public void setHolderAge(int holderAge) 
+   public void setPolicyHolderAge(int policyHolderAge) 
    {
-      policyHolderAge = holderAge;  
+      this.policyHolderAge = policyHolderAge;  
    }
    
    /**
       The setHolderHeight method sets the height of the policy holder.
       @param holderHeight Height of the policy holder
    */
-   public void setHolderHeight(double holderHeight) 
+   public void setPolicyHolderHeight(double policyHolderHeight) 
    {
-      policyHolderHeight = holderHeight;  
+      this.policyHolderHeight = policyHolderHeight;  
    }
    
    /**
       The setHolderWeight method sets the weight of the policy holder.
       @param holderWeight Weight of the policy holder
    */
-   public void setHolderWeight(double holderWeight) 
+   public void setPolicyHolderWeight(double policyHolderWeight) 
    {
-      policyHolderWeight = holderWeight;  
+      this.policyHolderWeight = policyHolderWeight;  
    }
    
+   // Getters
+     
    /**
-      getProvName method
+      setProviderName method
       @return Name of the provider.
    */
-   public String getProvName()
+   public String getProviderName()
    {
       return providerName;
-   }
-   
-   /**
-      getFirstName method
-      @return First name of the policy holder.
-   */
-   public String getFirstName()
-   {
-      return policyHolderFirstName;
-   }
-   
-   /**
-      getLastName method
-      @return Last name of the policy holder.
-   */
-   public String getLastName()
-   {
-      return policyHolderLastName;
    }
    
    /**
@@ -154,10 +117,10 @@ public class Policy
    }
    
    /**
-      getPolNumber method
+      policyNumber method
       @return Policy number.
    */
-   public int getPolNumber()
+   public int getPolicyNumber()
    {
       return policyNumber;
    }
