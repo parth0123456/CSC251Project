@@ -71,6 +71,12 @@ public class PolicyHolder
       return policyHolderLastName;
    }
    
+   public String toString()
+   {
+      return "Policy Holder: " +
+             "\nFirst Name: " + policyHolderFirstName +
+             "\nLast Name: " + policyHolderLastName;         
+   }
 
 }
 
