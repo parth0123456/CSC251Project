@@ -40,6 +40,20 @@ public class Policy
       this.policyHolderWeight = policyHolderWeight;
    }
    
+   /**
+      Copy Constructor
+      @param obj A Policy object to make a copy of
+   */
+   public Policy(Policy obj)
+   {
+      providerName = obj.providerName;
+      policyHolderSmokingStatus = obj.policyHolderSmokingStatus;
+      policyNumber = obj.policyNumber;
+      policyHolderAge = obj.policyHolderAge;
+      policyHolderHeight = obj.policyHolderHeight;
+      policyHolderWeight = obj.policyHolderWeight;
+   }
+   
    // Setters
    
    /**
@@ -189,4 +203,16 @@ public class Policy
       
       return baseFee;
    }  
+   
+   public String toString()
+   {
+      return "Provider Name: " + providerName + 
+             "\nPolicy Holder Smoking Status: " + policyHolderSmokingStatus + 
+             "\nPolicy Number: " + policyNumber +
+             "\nPolicy Holder Age: " + policyHolderAge + 
+             "\nPolicy Holder Height: " + policyHolderHeight +
+             "\nPolicy Holder Weight: " + policyHolderWeight +
+             "\nPolicy Holder BMI: " + getHolderBMI() +
+             "\nPolicy Price: " + getPolicyPrice();
+   }
 }
