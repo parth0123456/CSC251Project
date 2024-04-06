@@ -18,7 +18,8 @@ public class Project_parth_patel
          // Declare the Variables
          int policyNum = 0, holderAge = 0, totalSmokers = 0, totalNonSmokers = 0;
          String providerName = "", firstName = "", lastName = "", smokingStatus = "", fileInput = "";
-         double holderHeight = 0.0, holderWeight = 0.0; 
+         double holderHeight = 0.0, holderWeight = 0.0;
+          
          
          // Create an Array List to store objects. The ArrayList will hold Policy Objects.
          ArrayList<Policy> policies = new ArrayList<Policy>();
@@ -57,8 +58,10 @@ public class Project_parth_patel
 
             /* Create Policy objects using the Policy class type - we are still under the while loop. 
                Objects will be created as long as there are records in the file to read.*/
-            Policy p = new Policy(providerName, firstName, lastName, smokingStatus, 
-                                       policyNum, holderAge, holderHeight, holderWeight);
+            PolicyHolder policyHolder = new PolicyHolder(firstName, lastName);
+               
+            Policy p = new Policy(providerName, smokingStatus, policyNum, holderAge, holderHeight, holderWeight, policyHolder);
+            
             
             /* Add Policy objects to the ArrayList (Note: policies is the reference variable for the ArrayList 
                and p is the reference variable for the Policy objects)*/                           
@@ -83,21 +86,12 @@ public class Project_parth_patel
          for (int i = 0; i < policies.size(); ++i)
          {
             // Displaying the policy information for the user
-            System.out.println("\nPolicy Number: " + policies.get(i).getPolNumber()); // Instance Method - returns the policy number
-            System.out.println("Provider Name: " + policies.get(i).getProvName()); // Instance Method - returns the provider name
-            System.out.println("Policyholder's First Name: " + policies.get(i).getFirstName()); // Instance Method - returns the first name
-            System.out.println("Policyholder's Last Name: " + policies.get(i).getLastName()); // Instance Method - returns the last name
-            System.out.println("Policyholder's Age: " + policies.get(i).getHolderAge()); // Instance Method - returns the policy holders age
-            System.out.println("Policyholder's Smoking Status (smoker/non-smoker): " + policies.get(i).getSmokingStatus()); // Instance Method - returns the policy holders smoking status
-            System.out.println("Policyholder's Height: " + policies.get(i).getHolderHeight() + " inches"); // Instance Method - returns the policy holders height
-            System.out.println("Policyholder's Weight: " + policies.get(i).getHolderWeight() + " pounds"); // Instance Method - returns the policy holders weight
-            System.out.printf("Policyholder's BMI: %,.2f", policies.get(i).getHolderBMI()); // Method that returns BMI for each policy holder
-            System.out.printf("\nPolicy Price: $%,.2f", policies.get(i).getPolicyPrice()); // Method that returns the price for each policy 
-            System.out.println();
+            System.out.println(policies.get(i));
          }
          
+         System.out.println("There were " + Policy.getNumberOfPolicies() + " Policy objects created.");
          System.out.println("\nThe number of policies with a smoker is: " + totalSmokers); // Print the total amount of smokers
-         System.out.println("\nThe number of policies with a non-smoker is: " + totalNonSmokers); // Print the total amount of non-smokers
+         System.out.println("The number of policies with a non-smoker is: " + totalNonSmokers); // Print the total amount of non-smokers
       } // Close the "try" block of code
       
       catch (IOException ex) //If something goes wrong, an IOException is "thrown" to us, and we "catch" it and deal with it

@@ -4,8 +4,10 @@
 public class Policy
 {
    private String providerName, policyHolderSmokingStatus;
-   private int policyNumber, policyHolderAge, numberOfPolicies = 0;
+   private int policyNumber, policyHolderAge;
    private double policyHolderHeight, policyHolderWeight;
+   private PolicyHolder policyHolderName;
+   private static int numberOfPolicies = 0;
    
    /**
       No-arg constructor
@@ -18,20 +20,23 @@ public class Policy
       policyHolderAge = 0;
       policyHolderHeight = 0.0;
       policyHolderWeight = 0.0;
+      this.policyHolderName = new PolicyHolder();
       ++numberOfPolicies;
    }
    
    /**
       Constructor
-      @param provName The provider name
-      @param smokingStatus The policy holder's smoking status
-      @param polNumber The policy number
-      @param holderAge The policy holder's age
-      @param holderHeight The policy holder's height
-      @param holderWeight The policy holder's weight
+      @param providerName The provider name
+      @param policyHolderSmokingStatus The policy holder's smoking status
+      @param policyNumber The policy number
+      @param policyHolderAge The policy holder's age
+      @param policyHolderHeight The policy holder's height
+      @param policyHolderWeight The policy holder's weight
+      @param policyHolderName The policy holder's name
    */
    public Policy(String providerName, String policyHolderSmokingStatus, int policyNumber,
-                 int policyHolderAge, double policyHolderHeight, double policyHolderWeight)
+                 int policyHolderAge, double policyHolderHeight, double policyHolderWeight,
+                 PolicyHolder policyHolderName)
    {
       this.providerName = providerName;
       this.policyHolderSmokingStatus = policyHolderSmokingStatus;
@@ -39,6 +44,7 @@ public class Policy
       this.policyHolderAge = policyHolderAge;
       this.policyHolderHeight = policyHolderHeight;
       this.policyHolderWeight = policyHolderWeight;
+      this.policyHolderName = new PolicyHolder(policyHolderName);
       ++numberOfPolicies;
    }
    
@@ -113,6 +119,11 @@ public class Policy
       this.policyHolderWeight = policyHolderWeight;  
    }
    
+   public void setPolicyHolderName(PolicyHolder policyHolderName)
+   {
+      this.policyHolderName = new PolicyHolder(policyHolderName);
+   }
+   
    // Getters
      
    /**
@@ -143,37 +154,46 @@ public class Policy
    }
    
    /**
-      getHolderAge method
+      getPolicyHolderAge method
       @return Age of the policy holder.
    */
-   public int getHolderAge()
+   public int getPolicyHolderAge()
    {
       return policyHolderAge;
    }
    
    /**
-      getHolderHeight method
+      getPolicyHolderHeight method
       @return Height of the policy holder.
    */
-   public double getHolderHeight()
+   public double getPolicyHolderHeight()
    {
       return policyHolderHeight;
    }
    
    /**
-      getHolderWeight method
+      getPolicyHolderWeight method
       @return Weight of the policy holder.
    */
-   public double getHolderWeight()
+   public double getPolicyHolderWeight()
    {
       return policyHolderWeight;
    }
    
    /**
-      getHolderBMI method
+      getPolicyHolderName method
+      @return Name of the policy holder.
+   */
+   public PolicyHolder getPolicyHolderName()
+   {
+      return new PolicyHolder(policyHolderName);
+   }
+   
+   /**
+      getPolicyHolderBMI method
       @return BMI of the policy holder.
    */
-   public double getHolderBMI()
+   public double getPolicyHolderBMI()
    {
       double holderBMI;
       return holderBMI = (policyHolderWeight * 703) / (policyHolderHeight * policyHolderHeight);
@@ -197,7 +217,7 @@ public class Policy
          baseFee += 100;
       }
       
-      double holderBMI = getHolderBMI();
+      double holderBMI = getPolicyHolderBMI();
       
       if (holderBMI > 35)
       {
@@ -215,17 +235,24 @@ public class Policy
 
    public String toString()
    {
-      return String.format("Provider Name: " + providerName + 
-             "\nPolicy Holder Smoking Status: " + policyHolderSmokingStatus + 
-             "\nPolicy Number: " + policyNumber +
-             "\nPolicy Holder Age: " + policyHolderAge + 
-             "\nPolicy Holder Height: " + policyHolderHeight +
-             "\nPolicy Holder Weight: " + policyHolderWeight +
-             "\nPolicy Holder BMI: " + getHolderBMI() +
-             "\nPolicy Price: " + getPolicyPrice());
+      return 
+             "Policy Number: " + policyNumber + 
+             "\nProvider Name: " + providerName +
+             "\n" + policyHolderName.toString() +
+             "\nPolicyholder's Age: " + policyHolderAge +
+             "\nPolicyholder's Smoking Status (Y/N): " + policyHolderSmokingStatus + 
+             "\nPolicyholder's Height: " + String.format("%,.1f", policyHolderHeight) + " inches" + 
+             "\nPolicyholder's Weight: " + String.format("%,.1f", policyHolderWeight) + " pounds" + 
+             "\nPolicyholder's BMI: " + String.format("%,.2f", getPolicyHolderBMI()) + 
+             "\nPolicy Price: $" + String.format("%,.2f", getPolicyPrice()) + 
+             "\n";        
    }
    
-   public static int numberOfPolicies(int numberOfPolicies)
+   /**
+      getNumberOfPolicies Static Method 
+      @return numberOfPolicies The total number of policy objects created
+   */
+   public static int getNumberOfPolicies()
    {
       return numberOfPolicies;
    }

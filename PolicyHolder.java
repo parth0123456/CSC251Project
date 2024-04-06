@@ -79,9 +79,9 @@ public class PolicyHolder
    /** We make use of the String.format method to format the tuition cost and total cost. See Chapter 3 for information about this method.*/
    public String toString()
    {
-      return String.format("Policy Holder: " +
-             "\nFirst Name: " + policyHolderFirstName +
-             "\nLast Name: " + policyHolderLastName);         
+      return String.format(
+             "Policyholder's First Name: " + policyHolderFirstName +
+             "\nPolicyholder's Last Name: " + policyHolderLastName);         
    }
 
 }
