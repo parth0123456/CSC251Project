@@ -166,8 +166,8 @@ public class PolicyHolder
    */
    public double getPolicyHolderBMI()
    {
-      double holderBMI;
-      return holderBMI = (policyHolderWeight * 703) / (policyHolderHeight * policyHolderHeight);
+      final double CONVFACTOR = 703;
+      return (policyHolderWeight * CONVFACTOR) / (policyHolderHeight * policyHolderHeight);
    }
    
    /**
